@@ -1,12 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
-public class Board extends JPanel implements  Runnable, MouseListener {
+public class Board extends JPanel implements  Runnable, MouseListener, MouseMotionListener {
+
+    //Para el movimiento del mouse
+    //.addMouseMotionListener(this);
+    //addMouseMotionListener(this);
+
+
+
+
+
+    //
+
     boolean ingame=true;
     private Dimension d;
     int BOARD_WIDTH=500;
@@ -15,12 +23,14 @@ public class Board extends JPanel implements  Runnable, MouseListener {
     BufferedImage img;
     String message="Click Board to Start";
     private Thread animator;
+    Player p;
 
     public Board(){
         addKeyListener(new Tdapter());
         addMouseListener(this);
         setFocusable(true);
         d=new Dimension(BOARD_WIDTH,BOARD_HEIGHT);
+        p=new Player(BOARD_WIDTH/2,BOARD_HEIGHT-60,5);
         setBackground(Color.black);
         if (animator== null || !ingame){
             animator=new Thread(this);
@@ -32,6 +42,19 @@ public class Board extends JPanel implements  Runnable, MouseListener {
         super.paint(g);
         g.setColor(Color.white);
         g.fillRect(0,0,d.width,d.height);
+
+        //represent Player
+        g.setColor(Color.red);
+        g.fillRect(p.x,p.y,20,20);
+        if(p.moveRight==true) {
+            p.x += p.speed;
+        }
+        if(p.moveLeft==true) {
+            p.x -= p.speed;
+        }
+
+
+
         Font small = new Font("Helvetica",Font.BOLD,14);
         FontMetrics metr = this.getFontMetrics(small);
         g.setColor(Color.black);
@@ -46,15 +69,21 @@ public class Board extends JPanel implements  Runnable, MouseListener {
     private class Tdapter extends KeyAdapter{
         public void keyReleased(KeyEvent e){
             int key=e.getKeyCode();
+            p.moveRight=false;
+            p.moveLeft=false;
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println( e.getKeyCode());
-             message = "Key Pressed: " + e.getKeyCode();
+            //System.out.println( e.getKeyCode());
+            // message = "Key Pressed: " + e.getKeyCode();
             int key=e.getKeyCode();
             if(key==39){
+                p.moveRight=true;
 
+            }
+            if(key==37){
+                p.moveLeft=true;
             }
         }
     }
@@ -75,6 +104,7 @@ public class Board extends JPanel implements  Runnable, MouseListener {
     public void mousePressed(MouseEvent e) {
     int x= e.getX();
     int y = e.getY();
+        System.out.println("click");
     }
 
     @Override
@@ -84,12 +114,22 @@ public class Board extends JPanel implements  Runnable, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        System.out.println("dentro del escenario");
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        System.out.println("fuera del escenario");
+    }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println("moviento");
     }
 
     @Override
@@ -98,7 +138,7 @@ public class Board extends JPanel implements  Runnable, MouseListener {
         long beforeTime, timeDiff, sleep;
 
         beforeTime = System.currentTimeMillis();
-        int animationDelay = 500;
+        int animationDelay = 5;
         long time =
                 System.currentTimeMillis();
         while (true) {//infinite loop
