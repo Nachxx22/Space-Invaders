@@ -6,14 +6,14 @@ import java.awt.image.BufferedImage;
 public class Board extends JPanel implements  Runnable, MouseListener, MouseMotionListener {
 
 
-    int primer=0;
+    int coord =0;
     boolean ingame=true;
     private Dimension d;
     int BOARD_WIDTH=500;
     int BOARD_HEIGHT=500;
     int x=0;
     BufferedImage img;
-    String message="Click Board to Start";
+    String message="SpaceInvaders";
     private Thread animator;
     Player p;
 
@@ -48,14 +48,14 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         g.setColor(Color.red);
         g.fillRect(p.x,p.y,20,20);
         if(p.moveRight==true) {
-            p.x=primer;
-            System.out.println(primer);
+            p.x= coord;
+            System.out.println(coord);
         }
         if(p.moveLeft==true) {
-            p.x=primer;
+            p.x= coord;
         }
-        if(primer<465){
-            p.x=primer;
+        if(coord <465){
+            p.x= coord;
         }
 
 
@@ -139,7 +139,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     public void mouseMoved(MouseEvent e) {
         int x= e.getX();
         int y = e.getY();
-        primer=x;
+        coord =x;
 
 
 
