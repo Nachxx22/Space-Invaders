@@ -5,16 +5,8 @@ import java.awt.image.BufferedImage;
 
 public class Board extends JPanel implements  Runnable, MouseListener, MouseMotionListener {
 
-    //Para el movimiento del mouse
-    //.addMouseMotionListener(this);
-    //addMouseMotionListener(this);
 
-
-
-
-
-    //
-
+    int primer=0;
     boolean ingame=true;
     private Dimension d;
     int BOARD_WIDTH=500;
@@ -26,6 +18,15 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     Player p;
 
     public Board(){
+        //Para el movimiento del mouse
+        //Board.addMouseMotionListener(this);
+        addMouseMotionListener(this);
+
+
+
+
+
+        //
         addKeyListener(new Tdapter());
         addMouseListener(this);
         setFocusable(true);
@@ -47,12 +48,18 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         g.setColor(Color.red);
         g.fillRect(p.x,p.y,20,20);
         if(p.moveRight==true) {
-            p.x += p.speed;
+            p.x=primer;
+            System.out.println(primer);
         }
         if(p.moveLeft==true) {
-            p.x -= p.speed;
+            p.x=primer;
+        }
+        if(primer<465){
+            p.x=primer;
         }
 
+
+        //
 
 
         Font small = new Font("Helvetica",Font.BOLD,14);
@@ -78,6 +85,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             //System.out.println( e.getKeyCode());
             // message = "Key Pressed: " + e.getKeyCode();
             int key=e.getKeyCode();
+
             if(key==39){
                 p.moveRight=true;
 
@@ -129,7 +137,18 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("moviento");
+        int x= e.getX();
+        int y = e.getY();
+        primer=x;
+
+
+
+
+
+
+        //System.out.println("moviento");
+        //System.out.println(y);
+        //System.out.println(x);
     }
 
     @Override
