@@ -9,6 +9,7 @@ public class Starter extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
+
     }
 
     public static void main(String[] args) {
