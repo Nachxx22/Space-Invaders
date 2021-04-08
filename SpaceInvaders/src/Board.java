@@ -1,14 +1,24 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import static javax.imageio.ImageIO.read;
+
 
 public class Board extends JPanel implements  Runnable, MouseListener, MouseMotionListener {
 
 
-    int coord =0;
+    int coord =0, counter= 0, shooter =0;
+    public int [] xS = new int [100];
+    public int [] yS = new int [100];
     boolean ingame=true;
     private Dimension d;
+    public Ellipse2D [] shot  = new Ellipse2D[100];
     int BOARD_WIDTH=500;
     int BOARD_HEIGHT=500;
     int x=0;
@@ -16,14 +26,20 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     String message="SpaceInvaders";
     private Thread animator;
     Player p;
+    public Image nave;
+    public Image enemigos;
 
     public Board(){
         //Para el movimiento del mouse
         //Board.addMouseMotionListener(this);
         addMouseMotionListener(this);
 
-
-
+        //Images
+        try {
+            nave = ImageIO.read(new File("NAVE.jpeg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         //
@@ -41,12 +57,14 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
     public void paint(Graphics g){
         super.paint(g);
+        g = (Graphics2D)g;
         g.setColor(Color.white);
         g.fillRect(0,0,d.width,d.height);
 
         //represent Player
-        g.setColor(Color.red);
-        g.fillRect(p.x,p.y,20,20);
+        g.drawImage(nave,p.x-20,p.y-30,60,60,this);
+        //g.setColor(Color.red);
+        //g.fillRect(p.x,p.y,20,20);
         if(p.moveRight==true) {
             p.x= coord;
             System.out.println(coord);
@@ -57,10 +75,17 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         if(coord <465){
             p.x= coord;
         }
-
-
-        //
-
+        //represent shot
+        for(int i =0 ; i< shooter; i++) {
+            if (yS[i] >= -14) {
+                yS[i] -= 1;
+            }
+        }
+        for (int i = 0; i < shooter; i++){
+            shot[i] = new Ellipse2D.Double(xS[i],yS[i],10,15);
+            g.setColor(Color.BLACK);
+            ((Graphics2D) g).fill(shot[i]);
+        }
 
         Font small = new Font("Helvetica",Font.BOLD,14);
         FontMetrics metr = this.getFontMetrics(small);
@@ -73,6 +98,8 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
+
+
     private class Tdapter extends KeyAdapter{
         public void keyReleased(KeyEvent e){
             int key=e.getKeyCode();
@@ -97,22 +124,27 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
 
 
-
-
-
+    public void IniShoot (){
+        for(int i = 0; i < 100; i++){
+            yS[i]= p.y;
+        }
+    }
 
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if (counter<100){
+            xS [shooter] = (int) p.x;
+            shooter++;
+        }
     }
 
+
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed (MouseEvent e) {
     int x= e.getX();
     int y = e.getY();
-        System.out.println("click");
     }
 
     @Override
@@ -153,7 +185,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     @Override
     public void run() {
-
+        IniShoot();
         long beforeTime, timeDiff, sleep;
 
         beforeTime = System.currentTimeMillis();
@@ -173,3 +205,4 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         }//end while loop
     }
 }
+
