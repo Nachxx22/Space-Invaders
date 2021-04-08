@@ -41,7 +41,6 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             e.printStackTrace();
         }
 
-
         //
         addKeyListener(new Tdapter());
         addMouseListener(this);
