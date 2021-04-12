@@ -6,6 +6,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.imageio.ImageIO.read;
 
@@ -14,11 +16,11 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
 
     int coord =0, counter= 0, shooter =0;
-    public int [] xS = new int [100];
-    public int [] yS = new int [100];
+    public java.util.List<Integer> Shot; // Shot list
+    public java.util.List<Integer> xS; // Coord x (Shot)
+    public List<Integer> yS; // Coor y (Shot)
     boolean ingame=true;
     private Dimension d;
-    public Ellipse2D [] shot  = new Ellipse2D[100];
     int BOARD_WIDTH=500;
     int BOARD_HEIGHT=500;
     int x=0;
@@ -28,6 +30,8 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     Player p;
     public Image nave;
     public Image enemigos;
+    public Image bala;
+
 
     public Board(){
         //Para el movimiento del mouse
@@ -37,6 +41,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         //Images
         try {
             nave = ImageIO.read(new File("NAVE.jpeg"));
+            bala = ImageIO.read(new File("balas.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,15 +80,28 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             p.x= coord;
         }
         //represent shot
-        for(int i =0 ; i< shooter; i++) {
-            if (yS[i] >= -14) {
-                yS[i] -= 1;
+        if (Shot.size()>0) {
+            for (int i = 0; i < Shot.size(); i++) {
+                //Just one shoot
+                if (Shot.size()>1){
+                    if (xS.get(0) == xS.get(i)){
+                        xS.remove(i);
+                        yS.remove(i);
+                        Shot.remove(i);
+                    }
+                }
+                //Speed
+                yS.set(i, yS.get(i) - 4);
+                //In board
+                if (yS.get(i) > -20) {
+                    g.drawImage(bala, xS.get(i), yS.get(i), 20, 40, this);
+
+                    //Help Prints
+                    System.out.println("XS" + xS.get(i));
+                    System.out.println("YS" + yS.get(i));
+                    System.out.println("Bala" + p.x);
+                }
             }
-        }
-        for (int i = 0; i < shooter; i++){
-            shot[i] = new Ellipse2D.Double(xS[i],yS[i],10,15);
-            g.setColor(Color.BLACK);
-            ((Graphics2D) g).fill(shot[i]);
         }
 
         Font small = new Font("Helvetica",Font.BOLD,14);
@@ -124,19 +142,25 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
 
     public void IniShoot (){
-        for(int i = 0; i < 100; i++){
-            yS[i]= p.y;
-        }
+        Shot=new ArrayList<>();
+        xS = new ArrayList<>();
+        yS = new ArrayList<>();
     }
 
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (counter<100){
-            xS [shooter] = (int) p.x;
-            shooter++;
-        }
+        Shot.add(counter);
+        counter +=1;
+        xS.add(p.x);
+        yS.add(p.y);
+
+        //Help prints
+        System.out.println("XS"+xS.get(0));
+        System.out.println("YS"+yS.get(0));
+        System.out.println(Shot.size());
+        System.out.println(Shot);
     }
 
 
