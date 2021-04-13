@@ -1,4 +1,4 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
 public class Main {
     public static void main(String[] args) {

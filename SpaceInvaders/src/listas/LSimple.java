@@ -1,4 +1,4 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
 public class LSimple {
     private Node cabeza = null;

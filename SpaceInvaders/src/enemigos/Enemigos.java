@@ -1,4 +1,4 @@
-package cr.ac.tec.datos1.enemigos;
+package enemigos;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,19 +10,13 @@ package cr.ac.tec.datos1.enemigos;
  *
  * @author 50684
  */
-public class Jefe implements IEnemigos {
+public class Enemigos implements IEnemigos {
     private double _hitPoints;
     private int _velocidad;
     private double _resistencia;
     
-    public Jefe(int velocidad, double resistencia) {
-        double hitPointsTemp = Math.round(Math.random() * 5);
-        
-        while(hitPointsTemp<2 && hitPointsTemp>5){
-            hitPointsTemp = Math.round(Math.random() * 5);
-        }
-        
-        _hitPoints = hitPointsTemp;
+    public Enemigos(int velocidad, double resistencia) {
+        _hitPoints = 1;
         _velocidad = velocidad;
         _resistencia = resistencia;
     }

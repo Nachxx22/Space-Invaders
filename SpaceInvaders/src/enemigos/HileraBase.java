@@ -1,4 +1,4 @@
-package cr.ac.tec.datos1.enemigos;
+package enemigos;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,9 +10,6 @@ package cr.ac.tec.datos1.enemigos;
  *
  * @author 50684
  */
-public interface IEnemigos {
-    public double hitPoints();
-    public int velocidad();
-    public double resistencia();
-    public double bajarVida();
+public class HileraBase {
+    
 }
