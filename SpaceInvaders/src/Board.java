@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 import static javax.imageio.ImageIO.read;
 
@@ -26,11 +29,27 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     int x=0;
     BufferedImage img;
     String message="SpaceInvaders";
+    String timermessage="Tiempo:";
+    String points="Puntaje:";
+    int Score=0;
+    int Time=0;
+
     private Thread animator;
     Player p;
     public Image nave;
     public Image enemigos;
     public Image bala;
+
+// Timer
+
+    Timer timer= new Timer(1000,new ActionListener(){
+        @Override
+    public void actionPerformed(ActionEvent e){
+            Time++;
+        }
+});
+
+
 
 
     public Board(){
@@ -108,7 +127,11 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         FontMetrics metr = this.getFontMetrics(small);
         g.setColor(Color.black);
         g.setFont(small);
-        g.drawString(message,10,d.height-60);
+        g.drawString(message,10,20);
+        g.drawString(timermessage,10,40);g.drawString(String.valueOf(Time)+"s",10,60);
+        g.drawString(points,400,20); g.drawString(String.valueOf(Score),400,40);
+
+
         if(ingame){
              g.drawImage(img,0,0,200,200 ,null);
         }
@@ -161,6 +184,8 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         System.out.println("YS"+yS.get(0));
         System.out.println(Shot.size());
         System.out.println(Shot);
+        Score++;
+        timer.start();
     }
 
 
