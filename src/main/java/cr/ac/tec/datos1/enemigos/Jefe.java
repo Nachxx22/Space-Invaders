@@ -14,8 +14,9 @@ public class Jefe implements IEnemigos {
     private double _hitPoints;
     private int _velocidad;
     private double _resistencia;
+    private String _nombre;
     
-    public Jefe(int velocidad, double resistencia) {
+    public Jefe(int velocidad, double resistencia, String nombre) {
         double hitPointsTemp = Math.round(Math.random() * 5);
         
         while(hitPointsTemp<2 && hitPointsTemp>5){
@@ -25,6 +26,7 @@ public class Jefe implements IEnemigos {
         _hitPoints = hitPointsTemp;
         _velocidad = velocidad;
         _resistencia = resistencia;
+        _nombre = nombre;
     }
 
     @Override
@@ -46,5 +48,10 @@ public class Jefe implements IEnemigos {
     public double bajarVida() {
         _hitPoints -= 1;
         return _hitPoints;
+    } 
+
+    @Override
+    public String nombre() {
+        return _nombre;
     }
 }

@@ -1,10 +1,12 @@
 package cr.ac.tec.datos1.listas;
 
+import cr.ac.tec.datos1.enemigos.IEnemigos;
+
 public class LCircular {
     private Node cabeza = null;
     private Node cola = null;
 
-    public static LCircular insertarDato (LCircular lista, int dato){
+    public static LCircular insertarDato (LCircular lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
         if (lista.cabeza == null){
@@ -38,7 +40,7 @@ public class LCircular {
         return lista;
     }
 
-    private static Node buscarDato (LCircular lista, int dato){
+    private static Node buscarDato (LCircular lista, IEnemigos dato){
         Node temp = lista.cabeza;
 
         if (lista.cabeza == null) {
@@ -46,7 +48,7 @@ public class LCircular {
         }
         else{
             do {
-                if (temp.dato == dato){
+                if (temp.enemigo.nombre() == dato.nombre()){
                     return temp;
                 }
                 temp = temp.nextNode;

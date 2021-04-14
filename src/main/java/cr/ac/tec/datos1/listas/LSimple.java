@@ -1,10 +1,12 @@
 package cr.ac.tec.datos1.listas;
 
+import cr.ac.tec.datos1.enemigos.IEnemigos;
+
 public class LSimple {
     private Node cabeza = null;
     private Node cola = null;
 
-    public static LSimple insertarInicioDato(LSimple lista, int dato){
+    public static LSimple insertarInicioDato(LSimple lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
         if (lista.cabeza == null){
@@ -17,6 +19,23 @@ public class LSimple {
 
         return lista;
     }
+    
+//    public static LSimple insertarDatoEnIndice (LSimple lista, IEnemigos dato, int indice){
+//        Node nuevo = new Node(dato);
+//        Node actual = lista.cabeza;
+//        Node anterior;
+//        Node posterior;
+//        
+//        for (int i = 0; i < indice; i++) {
+//            actual = actual.nextNode;
+//            anterior = actual.prevNode;            
+//            posterior = actual.nextNode; 
+//        }
+//        
+//        
+//
+//        return lista;
+//    }
 
     public static LSimple insertarInicioCadena (LSimple lista, String cadena){
         Node nuevo = new Node(cadena);
@@ -32,7 +51,7 @@ public class LSimple {
         return lista;
     }
 
-    public static LSimple insertarFinalDato (LSimple lista, int dato){
+    public static LSimple insertarFinalDato (LSimple lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
         if (lista.cabeza == null){
@@ -49,6 +68,8 @@ public class LSimple {
 
         return lista;
     }
+    
+    
 
     public static LSimple insertarFinalCadena (LSimple lista, String cadena){
         Node nuevo = new Node(cadena);
