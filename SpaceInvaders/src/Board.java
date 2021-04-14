@@ -31,6 +31,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     String message="SpaceInvaders";
     String timermessage="Tiempo:";
     String points="Puntaje:";
+    Label score;
     int Score=0;
     int Time=0;
 
@@ -66,6 +67,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         }
 
         //
+        setLayout(null);
+        score = new Label("Score: ");
+        score.setBounds(10, 10, 70, 30);
+        add(score);
         addKeyListener(new Tdapter());
         addMouseListener(this);
         setFocusable(true);
@@ -184,7 +189,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         System.out.println("YS"+yS.get(0));
         System.out.println(Shot.size());
         System.out.println(Shot);
-        Score++;
+        score.setText("Score: "+Score++);
         timer.start();
     }
 

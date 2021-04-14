@@ -14,5 +14,6 @@ public class Starter extends JFrame {
 
     public static void main(String[] args) {
         new Starter();
+        new Timer();
     }
 }
