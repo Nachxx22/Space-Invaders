@@ -30,7 +30,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     BufferedImage img;
     String message="SpaceInvaders";
     String timermessage="Tiempo:";
-    String points="Puntaje:";
+    //String points="Puntaje:";
     Label score;
     int Score=0;
     int Time=0;
@@ -69,14 +69,14 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         //
         setLayout(null);
         score = new Label("Score: ");
-        score.setBounds(10, 10, 70, 30);
+        score.setBounds(10, 65, 70, 30);
         add(score);
         addKeyListener(new Tdapter());
         addMouseListener(this);
         setFocusable(true);
         d=new Dimension(BOARD_WIDTH,BOARD_HEIGHT);
         p=new Player(BOARD_WIDTH/2,BOARD_HEIGHT-60,5);
-        setBackground(Color.black);
+        //setBackground(Color.black);
         if (animator== null || !ingame){
             animator=new Thread(this);
             animator.start();
@@ -134,7 +134,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         g.setFont(small);
         g.drawString(message,10,20);
         g.drawString(timermessage,10,40);g.drawString(String.valueOf(Time)+"s",10,60);
-        g.drawString(points,400,20); g.drawString(String.valueOf(Score),400,40);
+        //g.drawString(points,400,20); g.drawString(String.valueOf(Score),400,40);
 
 
         if(ingame){
