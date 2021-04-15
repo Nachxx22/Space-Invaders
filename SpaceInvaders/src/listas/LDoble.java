@@ -1,10 +1,12 @@
-package listas;
+package cr.ac.tec.datos1.listas;
+
+import cr.ac.tec.datos1.enemigos.IEnemigos;
 
 public class LDoble {
     private Node cabeza = null;
     private Node cola = null;
 
-    public static LDoble insertarInicioDato (LDoble lista, int dato){
+    public static LDoble insertarInicioDato (LDoble lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
         if (lista.cabeza == null){
@@ -34,7 +36,7 @@ public class LDoble {
         return lista;
     }
 
-    public static LDoble insertarFinalDato (LDoble lista, int dato){
+    public static LDoble insertarFinalDato (LDoble lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
         if (lista.cabeza == null){
