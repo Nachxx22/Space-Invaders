@@ -1,4 +1,4 @@
-package listas;
+package cr.ac.tec.datos1.listas;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +48,7 @@ public class Main {
 
 
          */
-
+/*
         LCircular circ = new LCircular();
 
         circ = LCircular.insertarCadena(circ, "bonjour");
@@ -61,7 +61,7 @@ public class Main {
         circ = LCircular.borrarPos(circ,5);
 
 
-        circ.printLista(circ);
+        circ.printLista(circ);*/
 
         //Node prueba = LCircular.buscarDato(circ,1788);
         //System.out.println(prueba);
