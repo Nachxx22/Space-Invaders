@@ -1,6 +1,6 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
-import cr.ac.tec.datos1.enemigos.IEnemigos;
+import enemigos.IEnemigos;
 
 public class LDoble {
     private Node cabeza = null;
@@ -224,5 +224,13 @@ public class LDoble {
 
             temp = temp.nextNode;
         }
+    }
+
+    public int lenght(){
+        int cont = 0;
+        for(Node temp = cabeza; temp != null; temp = temp.getSig()){
+            cont ++;
+        }
+        return cont;
     }
 }

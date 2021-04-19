@@ -1,6 +1,6 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
-import cr.ac.tec.datos1.enemigos.IEnemigos;
+import enemigos.IEnemigos;
 
 public class LCircular {
     private Node cabeza = null;
@@ -153,6 +153,20 @@ public class LCircular {
 
             temp = temp.nextNode;
         } while (temp != lista.cabeza);
+    }
+
+    public int lenght() {
+        int cantidad = 0;
+        Node temp = cabeza;
+        if (cabeza == null) {
+            return 0;
+        } else {
+            do {
+                cantidad++;
+                temp = temp.getSig();
+            } while (temp != cabeza);
+            return cantidad;
+        }
     }
 }
 

@@ -15,4 +15,5 @@ public interface IEnemigos {
     public int velocidad();
     public double resistencia();
     public double bajarVida();
+    public String nombre();
 }

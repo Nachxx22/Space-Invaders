@@ -1,11 +1,11 @@
 
-package cr.ac.tec.datos1.hileras;
+package hileras;
 
-import cr.ac.tec.datos1.enemigos.Enemigos;
-import cr.ac.tec.datos1.enemigos.Jefe;
-import cr.ac.tec.datos1.listas.LCircular;
-import cr.ac.tec.datos1.listas.LDoble;
-import cr.ac.tec.datos1.listas.LSimple;
+import enemigos.Enemigos;
+import enemigos.Jefe;
+import listas.LCircular;
+import listas.LDoble;
+import listas.LSimple;
 
 public class Builder {
     

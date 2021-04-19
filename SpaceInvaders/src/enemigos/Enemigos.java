@@ -21,6 +21,12 @@ public class Enemigos implements IEnemigos {
         _resistencia = resistencia;
     }
 
+    public Enemigos(int velocidad, double resistencia, String _nombre) {
+        _hitPoints = 1;
+        _velocidad = velocidad;
+        _resistencia = resistencia;
+    }
+
     @Override
     public double hitPoints() {
        return _hitPoints;
@@ -40,5 +46,10 @@ public class Enemigos implements IEnemigos {
     public double bajarVida() {
         _hitPoints -= 1;
         return _hitPoints;
+    }
+
+    @Override
+    public String nombre() {
+        return null;
     }
 }

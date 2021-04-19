@@ -12,6 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import listas.LCircular;
+import listas.LDoble;
+import listas.LSimple;
+import hileras.*;
+
 import static javax.imageio.ImageIO.read;
 
 
@@ -40,6 +45,13 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     public Image enemigos;
     public Image bala;
 
+    LSimple listaTemporal = Builder.BuildBasic(1,0);
+    LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
+    LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
+    LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+    LCircular listaTemporal5 = Builder.BuildClaseD(1);
+    LCircular listaTemporal6 = Builder.BuildClaseE(1);
+
 // Timer
 
     Timer timer= new Timer(1000,new ActionListener(){
@@ -61,6 +73,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         try {
             nave = ImageIO.read(new File("NAVE.jpeg"));
             bala = ImageIO.read(new File("balas.png"));
+            enemigos = ImageIO.read(new File("alien.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,6 +134,12 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
                     System.out.println("Bala" + p.x);
                 }
             }
+        }
+
+        int distance = 10;
+        for (int i = 0; i < listaTemporal.lenght(); i++) {
+            g.drawImage(enemigos,distance,10,30,30,this);
+            distance+=40;
         }
 
         Font small = new Font("Helvetica",Font.BOLD,14);

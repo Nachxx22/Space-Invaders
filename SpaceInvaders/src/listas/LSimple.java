@@ -1,6 +1,6 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
-import cr.ac.tec.datos1.enemigos.IEnemigos;
+import enemigos.IEnemigos;
 
 public class LSimple {
     private Node cabeza = null;
@@ -140,6 +140,14 @@ public class LSimple {
 
             temp = temp.nextNode;
         }
+    }
+
+    public int lenght(){
+        int cont = 0;
+        for(Node temp = cabeza; temp != null; temp = temp.getSig()){
+            cont ++;
+        }
+        return cont;
     }
 
 }

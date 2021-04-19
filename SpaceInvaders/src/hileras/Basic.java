@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cr.ac.tec.datos1.hileras;
+package hileras;
 
-import cr.ac.tec.datos1.enemigos.Enemigos;
-import cr.ac.tec.datos1.listas.LSimple;
+import enemigos.Enemigos;
+import listas.LSimple;
 
 /**
  *

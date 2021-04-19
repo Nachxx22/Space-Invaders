@@ -1,6 +1,6 @@
-package cr.ac.tec.datos1.listas;
+package listas;
 
-import cr.ac.tec.datos1.enemigos.IEnemigos;
+import enemigos.IEnemigos;
 
 
 public class Node {
@@ -20,5 +20,9 @@ public class Node {
     
     public Node(IEnemigos enemigo){
         enemigo = enemigo;
+    }
+
+    public Node getSig() {
+        return nextNode;
     }
 }
