@@ -7,7 +7,11 @@ package hileras;
 
 import listas.*;
 import hileras.*;
- 
+/**
+ * Esta clase almacena la hilera claseA
+ * @author grupo 4
+ * @version 1.0
+ */
 public class ClaseA {
     LSimple lista;
     public ClaseA()

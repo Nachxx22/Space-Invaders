@@ -41,43 +41,68 @@ public class Enemigos implements IEnemigos {
         _resistencia = resistencia;
         _nombre = nombre;
     }
-
+    /**
+     * Método que retorna los golpes dados a los enemigos
+     * @return retorna los golpes
+     */
     @Override
     public double hitPoints() {
        return _hitPoints;
     }
-
+    /**
+     * Método que retorna la velocidad de los enemigos
+     * @return retorna la velocidad
+     */
     @Override
     public int velocidad() {
         return _velocidad;
     }
-
+    /**
+     * Método que retorna la resistencia de los enemigos
+     * @return retorna la resistencia
+     */
     @Override
     public double resistencia() {
         return _resistencia;
     }
-
+    /**
+     * Método que disminuye la vida del enemigo
+     * @return retorna los golpes
+     */
     @Override
     public double bajarVida() {
         _hitPoints -= 1;
         return _hitPoints;
     }
-
+    /**
+     * Método que retorna el nombre del enemigo
+     * @return retorna el nombre
+     */
     @Override
     public String nombre() {
         return _nombre;
     }
- 
+    /**
+     * Método que retorna la pasición en x
+     * @return retorna el valor de x
+     */
 	public int X() {
 		// TODO Auto-generated method stub
 		return _X;
 	}
-
+    /**
+     * Método que retorna la posición en Y
+     * @return retorna el valor de y
+     */
 	public int Y() {
 		// TODO Auto-generated method stub
 		return _Y;
 	}
-	
+    /**
+     * Método que permite colocar las coordenadas
+     * @param x valor de x
+     * @param y valor de y
+     */
 	public void setCoordenadas(int x, int y)
 	{
 		_X = x;

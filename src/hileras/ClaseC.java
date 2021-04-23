@@ -9,8 +9,9 @@ import listas.*;
 import hileras.*;
 
 /**
- *
- * @author 50684
+ * Esta clase almacena la hilera claseC
+ * @author grupo 4
+ * @version 1.0
  */
 public class ClaseC {
     LCircular lista;

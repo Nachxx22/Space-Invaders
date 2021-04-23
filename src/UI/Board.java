@@ -126,7 +126,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     /**
      * El metodo paint se encarga de dibujar en la interfaz
-     * @param g
+     * @param g graficas
      */
     public void paint(Graphics g){
         super.paint(g);
@@ -618,12 +618,13 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
-
+    /**
+     * printBala, se utiliza para dibujar las balas disparadas y
+     * detectar colisiones.
+     * @param g
+     */
 	private void PrintBala(Graphics g) {
-        /**
-         * El metodo printBala, se utiliza para dibujar las balas disparadas y
-         * detectar colisiones.
-         */
+
 		//represent shot
 		if (Shot.size()>0 && !golpeoEnemigo) {
 		    for (int index = 0; index < Shot.size(); index++) {

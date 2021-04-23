@@ -6,9 +6,18 @@ import enemigos.Jefe;
 import listas.LCircular;
 import listas.LDoble;
 import listas.LSimple;
-
+/**
+ * Esta clase se utiliza para construir las distintas hileras de enemigos
+ * @author grupo 4
+ * @version 1.0
+ */
 public class Builder {
-    
+    /**
+     * Este método construye la hilera tipo básica
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     * @return retorna la lista
+     */
     public static LSimple BuildBasic(int velocidad, double resistencia)
     {
         Integer cantidadEnemigos = 6;
@@ -23,7 +32,12 @@ public class Builder {
         
         return resultado;
     }
-    
+    /**
+     * Este método construye la hilera tipo claseA
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     * @return retorna la lista
+     */
     public static LSimple BuildClaseA(int velocidad, double resistencia)
     {
         Integer cantidadEnemigos = 7;
@@ -49,7 +63,12 @@ public class Builder {
         
         return resultado;
     }
-    
+    /**
+     * Este método construye la hilera tipo claseB
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     * @return retorna la lista
+     */
     public static LDoble BuildClaseB(int velocidad, double resistencia)
     {
         Integer cantidadEnemigos = 7;
@@ -75,7 +94,12 @@ public class Builder {
         
         return resultado;
     }
-    
+    /**
+     * Este método construye la hilera tipo claseC
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     * @return retorna la lista
+     */
     public static LCircular BuildClaseC(int velocidad, double resistencia)
     {
         Integer cantidadEnemigos = 7;
@@ -101,7 +125,10 @@ public class Builder {
         
         return resultado;
     }
-    
+    /**
+     * Este método ordena la hilera con algoritmo bubble sort
+     * @param arr valor Array
+     */
     public static void bubbleSort(double arr[])
     {
         int n = arr.length;
@@ -115,7 +142,11 @@ public class Builder {
                     arr[j+1] = temp;
                 }
     }
-    
+    /**
+     * Este método construye la hilera tipo claseD
+     * @param velocidad valor de la velocidad
+     * @return retorna la lista
+     */
     public static LCircular BuildClaseD(int velocidad)
     {
         Integer cantidadEnemigos = 7;
@@ -149,7 +180,11 @@ public class Builder {
         
         return resultado;
     }
-    
+    /**
+     * Este método construye la hilera tipo claseE
+     * @param velocidad valor de la velocidad
+     * @return retorna la lista
+     */
     public static LCircular BuildClaseE(int velocidad)
     {
         Integer cantidadEnemigos = 7;

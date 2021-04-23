@@ -3,12 +3,22 @@ package listas;
 import java.util.Iterator;
 
 import enemigos.*;
-
+/**
+ * Esta clase crea una lista enlazada simple
+ * @author grupo 4
+ * @version 1.0
+ */
 public class LSimple  {
     private Node cabeza = null;
     private Node cola = null;
     
 
+    /**
+     * Este método inserta un dato al iicio de la lista
+     * @param lista
+     * @param dato
+     * @return
+     */
     public static LSimple insertarInicioDato(LSimple lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
@@ -22,7 +32,11 @@ public class LSimple  {
 
         return lista;
     }
-    
+    /**
+     * Este método selecciona la posición de un enemigo
+     * @param posicion
+     * @return
+     */
     public IEnemigos seleccionarEnemigoEnPosicion(int posicion)
     {
     	Node tempNodo = cabeza;
@@ -52,7 +66,13 @@ public class LSimple  {
 //        
 //
 //        return lista;
-//    } 
+//    }
+    /**
+     * Este método inserta una cadena al inicio
+     * @param lista
+     * @param cadena
+     * @return
+     */
     public static LSimple insertarInicioCadena (LSimple lista, String cadena){
         Node nuevo = new Node(cadena);
 
@@ -66,7 +86,12 @@ public class LSimple  {
 
         return lista;
     }
-     
+    /**
+     * Este método inserta un dato al final de la lista
+     * @param lista
+     * @param dato
+     * @return
+     */
     public static LSimple insertarFinalDato (LSimple lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
@@ -83,8 +108,13 @@ public class LSimple  {
         }
 
         return lista;
-    } 
-     
+    }
+    /**
+     * Este método inserta una cadena al final de la lista
+     * @param lista
+     * @param cadena
+     * @return
+     */
     public static LSimple insertarFinalCadena (LSimple lista, String cadena){
         Node nuevo = new Node(cadena);
 
@@ -103,7 +133,11 @@ public class LSimple  {
 
         return lista;
     }
-
+    /**
+     * Este método borra un dato al inicio de la lista
+     * @param lista
+     * @return
+     */
     public static LSimple borrarInicio (LSimple lista){
         if (lista.cabeza == null){
             return null;
@@ -117,7 +151,11 @@ public class LSimple  {
         return lista;
     }
 
-    
+    /**
+     * Este método borra un dato al final de la lista
+     * @param lista
+     * @return
+     */
     public static LSimple borrarFinal (LSimple lista){
         if (lista.cabeza == null){
             return null;
@@ -139,7 +177,10 @@ public class LSimple  {
             return lista;
         }
     }
-
+    /**
+     * Este método imprime la lista
+     * @param lista
+     */
     public static void printLista (LSimple lista){
         Node temp = lista.cabeza;
 
@@ -156,7 +197,10 @@ public class LSimple  {
             temp = temp.nextNode;
         }
     }
-
+    /**
+     * devuelve el largo de la lista
+     * @return
+     */
     public int lenght(){
         int cont = 0;
         for(Node temp = cabeza; temp != null; temp = temp.getSig()){
