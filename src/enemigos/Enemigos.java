@@ -18,14 +18,23 @@ public class Enemigos implements IEnemigos {
     private String _nombre;
     private int _X;
     private int _Y;
-    
+    /**
+     * Método constructor
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     */
     public Enemigos(int velocidad, double resistencia) {
         _hitPoints = 1;
         _velocidad = velocidad;
         _resistencia = resistencia;
         _X = _Y = 0;
     }
-
+    /**
+     * Método constructor
+     * @param velocidad valor de la velocidad
+     * @param resistencia valor de la resistencia
+     * @param nombre valor del nombre
+     */
     public Enemigos(int velocidad, double resistencia, String nombre) {
         _hitPoints = 1;
         _velocidad = velocidad;

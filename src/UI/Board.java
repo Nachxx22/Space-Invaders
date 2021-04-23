@@ -64,7 +64,13 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     LSimple listaBasic = Builder.BuildBasic(1,0);
 
-    // Timer 
+    // Timer
+    /**
+     *
+     *  Cuando este metodo se inicia se empieza a contar cada 1s y se suma como segundos, con el nombre de time
+     *  Cuando el time es mayor, time regresa a valer 0 para comenzar desde cero la cuenta y se suma 1 a los minutos
+     *
+     * */
     Timer timer= new Timer(1000,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e){
@@ -78,7 +84,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     public Board(){
         /**
-         *
+         * En este metodo se definen las imagenes
          */
 
         //Para el movimiento del mouse
@@ -147,6 +153,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
  
         int cantidadDeEnemigos = 0;
         int distanceX = 125;
+
         if (round == 0 || round == 1) {
         	for (int i = 0; i < listaTemporal.lenght(); i++) 
             {
@@ -644,7 +651,9 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 		}
 	}
 
-
+    /**
+     * Se utiliza para detectar eventos de teclado
+     */
     private class Tdapter extends KeyAdapter{
         public void keyReleased(KeyEvent e){
             int key = e.getKeyCode();
@@ -652,6 +661,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             p.moveLeft = false;
         }
 
+        /**
+         * keyPressed se utiliza para saber cuando se selecciona alguna tecla.
+         * @param e accion del teclado
+         */
         @Override
         public void keyPressed(KeyEvent e) {
             //System.out.println( e.getKeyCode());
@@ -734,7 +747,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     public void mouseDragged(MouseEvent e) {
 
     }
-
+    /**
+     * Se utiliza para obtener las coordenadas en las que el mouse se esta moviendo.
+     * @param e accion del mouse.
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         int x= e.getX();
@@ -755,7 +771,9 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
 
     long time = System.currentTimeMillis();
-    
+    /**
+     * Bucle para el funcionamiento del juego
+     */
     public void boardLoop()
     { 
         int animationDelay = 5;
