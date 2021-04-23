@@ -6,11 +6,12 @@
 package SpaceInvaders.src.hileras; 
 
 import SpaceInvaders.src.listas.*; 
-import SpaceInvaders.src.hileras.*; 
+import SpaceInvaders.src.hileras.*;
 
 /**
- *
- * @author 50684
+ * Esta clase almacena la hilera claseB
+ * @author grupo 4
+ * @version 1.0
  */
 public class ClaseB {
     LDoble lista;

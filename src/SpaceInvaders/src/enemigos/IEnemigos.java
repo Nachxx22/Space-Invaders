@@ -6,8 +6,9 @@ package SpaceInvaders.src.enemigos;
  */
 
 /**
- *
- * @author 50684
+ * Interface
+ * @author grupo 4
+ * @version 1.0
  */
 public interface IEnemigos {
     public double hitPoints();

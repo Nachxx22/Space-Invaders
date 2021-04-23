@@ -8,8 +8,9 @@ package SpaceInvaders.src.hileras;
 import SpaceInvaders.src.listas.*;
 
 /**
- *
- * @author 50684
+ * Esta clase almacena la hilera claseE
+ * @author grupo 4
+ * @version 1.0
  */
 public class ClaseE {
     LCircular lista;

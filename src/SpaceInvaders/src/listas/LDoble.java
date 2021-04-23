@@ -1,11 +1,20 @@
 package SpaceInvaders.src.listas;
 
 import SpaceInvaders.src.enemigos.*;
-
+/**
+ * Esta clase crea una lista doble
+ * @author grupo 4
+ * @version 1.0
+ */
 public class LDoble {
     private Node cabeza = null;
     private Node cola = null;
-
+    /**
+     * Este método inserta un dato al inicio de la lista
+     * @param lista
+     * @param dato
+     * @return
+     */
     public static LDoble insertarInicioDato (LDoble lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
@@ -20,7 +29,12 @@ public class LDoble {
 
         return lista;
     }
-
+    /**
+     * Este método inserta una cadena al inicio de la lista
+     * @param lista
+     * @param cadena
+     * @return
+     */
     public static LDoble insertarInicioCadena (LDoble lista, String cadena){
         Node nuevo = new Node(cadena);
 
@@ -35,7 +49,12 @@ public class LDoble {
 
         return lista;
     }
-
+    /**
+     * Este método inserta un dato al final de la lista
+     * @param lista
+     * @param dato
+     * @return
+     */
     public static LDoble insertarFinalDato (LDoble lista, IEnemigos dato){
         Node nuevo = new Node(dato);
 
@@ -50,7 +69,12 @@ public class LDoble {
 
         return lista;
     }
-
+    /**
+     * Este método inserta una cadena al final de la lista
+     * @param lista
+     * @param cadena
+     * @return
+     */
     public static LDoble insertarFinalCadena (LDoble lista, String cadena){
         Node nuevo = new Node(cadena);
 
@@ -65,7 +89,11 @@ public class LDoble {
 
         return lista;
     }
-
+    /**
+     * Este método devuelve el largo de la lista
+     * @param lista
+     * @return
+     */
     public static int largo (LDoble lista){
         Node temp = lista.cabeza;
         int i = 0;
@@ -77,7 +105,12 @@ public class LDoble {
 
         return i;
     }
-
+    /**
+     * Este método busca un posición en la lista
+     * @param lista
+     * @param pos
+     * @return
+     */
     private static Node buscarPos (LDoble lista, int pos){
         Node temp = lista.cabeza;
         int i = 0;
@@ -101,7 +134,13 @@ public class LDoble {
 
         return null;
     }
-
+    /**
+     * Este método inserta un dato en una posición
+     * @param lista
+     * @param pos
+     * @param dato
+     * @return
+     */
     public static LDoble insertarPosicionDato (LDoble lista, int pos, int dato) {
         Node temp = buscarPos(lista, pos);
         if (temp != null){
@@ -117,7 +156,13 @@ public class LDoble {
             return null;
         }
     }
-
+    /**
+     * Este método inserta una cadena en una posición
+     * @param lista
+     * @param pos
+     * @param cadena
+     * @return
+     */
     public static LDoble insertarPosicionCadena (LDoble lista, int pos, String cadena) {
         Node temp = buscarPos(lista, pos);
         if (temp != null){
@@ -133,7 +178,12 @@ public class LDoble {
             return null;
         }
     }
-
+    /**
+     * Este método busca un dato en la lista
+     * @param lista
+     * @param dato
+     * @return
+     */
     private static Node buscarDato (LDoble lista, int dato) {
         Node temp = lista.cabeza;
         while (temp != null){
@@ -145,7 +195,12 @@ public class LDoble {
 
         return null;
     }
-
+    /**
+     * Este método busca una cadena en la lista
+     * @param lista
+     * @param cadena
+     * @return
+     */
     private static Node buscarCadena (LDoble lista, String cadena) {
         Node temp = lista.cabeza;
         while (temp != null){
@@ -157,7 +212,11 @@ public class LDoble {
 
         return null;
     }
-
+    /**
+     * Este método borra un dato al inicio de la lista
+     * @param lista
+     * @return
+     */
     public static LDoble borrarInicio (LDoble lista){
         if (lista.cabeza == null){
             return null;
@@ -171,7 +230,11 @@ public class LDoble {
             return lista;
         }
     }
-
+    /**
+     * Este método borra un dato al final de la lista
+     * @param lista
+     * @return
+     */
     public static LDoble borrarFinal (LDoble lista){
         if (lista.cabeza == null){
             return null;
@@ -190,7 +253,12 @@ public class LDoble {
             return lista;
         }
     }
-
+    /**
+     * Este método elimina un método en una posición
+     * @param lista
+     * @param pos
+     * @return
+     */
     public static LDoble borrarPos (LDoble lista, int pos){
         if (pos == 0){
             return borrarInicio(lista);
@@ -209,7 +277,10 @@ public class LDoble {
             return lista;
         }
     }
-
+    /**
+     * Este método imprime la lista
+     * @param lista
+     */
     public static void printLista (LDoble lista){
         Node temp = lista.cabeza;
 
@@ -225,7 +296,10 @@ public class LDoble {
             temp = temp.nextNode;
         }
     }
-
+    /**
+     * Este método devuelve el largo de la lista
+     * @return
+     */
     public int lenght(){
         int cont = 0;
         for(Node temp = cabeza; temp != null; temp = temp.getSig()){

@@ -74,10 +74,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 		}
     );
 
+    /**
+     * En este metodo se definen las imagenes
+     */
     public Board(){
-        /**
-         *
-         */
 
         //Para el movimiento del mouse
         //Board.addMouseMotionListener(this);
@@ -118,7 +118,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     /**
      * El metodo paint se encarga de dibujar en la interfaz
-     * @param g
+     * @param g graficas
      */
     public void paint(Graphics g){
         super.paint(g);
@@ -329,12 +329,13 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
-
+    /**
+     * printBala, se utiliza para dibujar las balas disparadas y
+     * detectar colisiones.
+     * @param g
+     */
 	private void PrintBala(Graphics g) {
-        /**
-         * El metodo printBala, se utiliza para dibujar las balas disparadas y
-         * detectar colisiones.
-         */
+
 		//represent shot
 		if (Shot.size()>0 && !golpeoEnemigo) {
 		    for (int index = 0; index < Shot.size(); index++) {
@@ -362,7 +363,9 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 		}
 	}
 
-
+    /**
+     * Se utiliza para detectar eventos de teclado
+     */
     private class Tdapter extends KeyAdapter{
         public void keyReleased(KeyEvent e){
             int key = e.getKeyCode();
@@ -370,6 +373,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             p.moveLeft = false;
         }
 
+        /**
+         * keyPressed se utiliza para saber cuando se selecciona alguna tecla.
+         * @param e accion del teclado
+         */
         @Override
         public void keyPressed(KeyEvent e) {
             //System.out.println( e.getKeyCode());
@@ -447,6 +454,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     }
 
+    /**
+     * Se utiliza para obtener las coordenadas en las que el mouse se esta moviendo.
+     * @param e accion del mouse.
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         int x= e.getX();
@@ -467,7 +478,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
 
     long time = System.currentTimeMillis();
-    
+
+    /**
+     * Bucle para el funcionamiento del juego
+     */
     public void boardLoop()
     { 
         int animationDelay = 5;

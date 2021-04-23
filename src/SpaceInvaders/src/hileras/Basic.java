@@ -10,8 +10,9 @@ import SpaceInvaders.src.hileras.*;
 import SpaceInvaders.src.enemigos.*;
 
 /**
- *
- * @author 50684
+ * Esta clase almacena la hilera básica
+ * @author grupo 4
+ * @version 1.0
  */
 public class Basic {
     LSimple lista;

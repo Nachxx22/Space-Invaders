@@ -1,7 +1,11 @@
 package SpaceInvaders.src.listas;
 
 import SpaceInvaders.src.enemigos.*;
-
+/**
+ * Esta clase se utiliza para crear el nodo de las listas enlazadas
+ * @author grupo 4
+ * @version 1.0
+ */
 public class Node {
     int dato;
     String cadena;

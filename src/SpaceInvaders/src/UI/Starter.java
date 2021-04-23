@@ -1,7 +1,11 @@
 package SpaceInvaders.src.UI;
 
-import javax.swing.*; 
-
+import javax.swing.*;
+/**
+ * Clase para correr el proyecto
+ * @author grupo 4
+ * @version 1.0
+ */
 public class Starter extends JFrame {
     public Starter(){
         add(new Board());
@@ -13,7 +17,10 @@ public class Starter extends JFrame {
         setResizable(false);
 
     }
-
+    /**
+     * Método principal
+     * @param args args
+     */
     public static void main(String[] args) {
         new Starter();
     }
