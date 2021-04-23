@@ -7,7 +7,7 @@ package SpaceInvaders.src.enemigos;
 
 /**
  *
- * @author 50684
+ * @author Grupo 4
  */
 public class Jefe implements IEnemigos {
     private double _hitPoints;

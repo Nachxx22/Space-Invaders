@@ -88,7 +88,7 @@ public class LCircular {
         return i;
     }
 
-    private static Node buscarPos (LCircular lista, int pos){
+    public static Node buscarPos (LCircular lista, int pos){
         Node temp = lista.cabeza;
         int i = 0;
 

@@ -1,3 +1,3 @@
-module SpaceInvaders {
-	requires java.desktop;
-}
+//module SpaceInvaders {
+//	requires java.desktop;
+//}

@@ -7,8 +7,9 @@ package SpaceInvaders.src.enemigos;
  */
 
 /**
- *
- * @author 50684
+ *La clase Enemigo hereda de la clase IEnemigos
+ * Aqui se definen objetos enteros, double y strings, para dar caracteristicas a las naves enemigas.
+ * @author Grupo 4
  */
 public class Enemigos implements IEnemigos {
     private double _hitPoints;

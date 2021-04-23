@@ -22,6 +22,11 @@ import SpaceInvaders.src.enemigos.*;
 
 import static javax.imageio.ImageIO.read;
 
+/**
+ * La clase board define toda la interfaz
+ * @author Grupo 4
+ * @version 3.0
+ */
 public class Board extends JPanel implements  Runnable, MouseListener, MouseMotionListener { 
     int coord =0, counter= 0, shooter =0;
     public java.util.List<Integer> Shot; // Shot list
@@ -70,6 +75,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     );
 
     public Board(){
+        /**
+         *
+         */
+
         //Para el movimiento del mouse
         //Board.addMouseMotionListener(this);
         addMouseMotionListener(this);
@@ -106,6 +115,11 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     Integer currentShoty = 0, currentShotX = 0;
     boolean golpeoEnemigo = false;
+
+    /**
+     * El metodo paint se encarga de dibujar en la interfaz
+     * @param g
+     */
     public void paint(Graphics g){
         super.paint(g);
         
@@ -198,23 +212,25 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             	round ++;
             }
 		}
-        
+
+        ///////////////////////////////////////////
+
         if(round == 3)
-        {   
+        {
     		int posJefe = (int)Math.ceil((Math.random() * 7));
     		int posJefeNormal = 0;
         	IEnemigos[] enemigosArr = new IEnemigos[7];
     		 
-        	for (int i = 0; i < listaTemporal.lenght(); i++) 
-            { 
-            	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i); 
+        	for (int i = 0; i < listaTemporal.lenght(); i++)
+            {
+            	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i);
 				enemigosArr[i] = enemigoX;
 				
 				if(enemigoX.nombre().contains("Jefe"))
 				{
-					posJefeNormal = i; 
+					posJefeNormal = i;
 				}
-            } 
+            }
 
         	IEnemigos NTemp = enemigosArr[posJefe];
         	IEnemigos JTemp = enemigosArr[posJefeNormal];
@@ -223,7 +239,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     		enemigosArr[posJefeNormal] = NTemp;
         	
     		
-        	for (int i = 0; i < listaTemporal.lenght(); i++) 
+        	for (int i = 0; i < listaTemporal.lenght(); i++)
             {  	  
             	IEnemigos enemigoX = enemigosArr[i];
        
@@ -288,6 +304,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             	//round ++;
             }
         }
+
         
         
         if (HileraY >= BOARD_HEIGHT) {
@@ -314,6 +331,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
 
 	private void PrintBala(Graphics g) {
+        /**
+         * El metodo printBala, se utiliza para dibujar las balas disparadas y
+         * detectar colisiones.
+         */
 		//represent shot
 		if (Shot.size()>0 && !golpeoEnemigo) {
 		    for (int index = 0; index < Shot.size(); index++) {
@@ -366,6 +387,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     }
 
     public void IniShoot (){
+        /**
+         * Este metodo se utiliza para inicializar los arrays (usados por las balas.)
+         *
+         */
         Shot = new ArrayList<Integer>();
         xS = new ArrayList<Integer>();
         yS = new ArrayList<Integer>();
@@ -373,6 +398,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        /**
+         * El metodo MouseClicked se utiliza para detectar alguna interaccion de click, con el mouse.
+         * Ayuda a iniciar con el cronometro y a cuantificafr los disparos con sus posiciones.
+         */
         Shot.add(counter);
         xS.add(p.x);
         yS.add(p.y);
@@ -389,6 +418,11 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     @Override
     public void mousePressed (MouseEvent e) {
+        /**
+         * mousePressed, metodo utlizado para obtener las posiciones "x"/ "y" del mouse al
+         * momento de interaccion y asi otorgarlas a la nave.
+         *
+         */
 	    int x= e.getX();
 	    int y = e.getY();
     }
@@ -422,6 +456,9 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
     @Override
     public void run() {
+        /**
+         * Run, inicializa
+         */
         IniShoot();
         long beforeTime, timeDiff, sleep;
     	ingame = true;
