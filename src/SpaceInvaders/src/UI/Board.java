@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +33,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
     int BOARD_HEIGHT=500;
     int x=0;
     
-    int rounds = 0;
+    int round = 1;
     
     BufferedImage img;
     String message="SpaceInvaders";
@@ -126,61 +128,165 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         if(coord <465){
             p.x= coord;
         } 
-
+ 
         int cantidadDeEnemigos = 0;
         int distanceX = 125;
-        for (int i = 0; i < listaTemporal.lenght(); i++) {
- 
-        	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i + 1);
-   
-            enemigoX.setCoordenadas(distanceX, (int)Math.floor(HileraY));
-             
-            
-            Image imageToUse = enemigoX.nombre().contains("Jefe") ? jefeImage : enemigosImage;
-            
-            int eX = enemigoX.X();
-            int eY = enemigoX.Y();
-            
-            if(currentShotX > (eX - 15) && currentShotX < (eX + 15) && 
-    		   currentShoty > (eY - 15) && currentShoty < (eY + 15))
-            { 
-            	if(!golpeoEnemigo)
-            	{ 
-                    Score++;
-                	enemigoX.bajarVida();
-            	}
-            	
-            	golpeoEnemigo = true;
-            }
-            else { 
-                PrintBala(g); 
-            }
-        	
-            if (enemigoX.nombre().contains("Jefe")) {
-            	System.out.println("BossHP " + enemigoX.hitPoints());
-			}
-            
-            if(enemigoX.hitPoints() > 0)
-            {
-            	cantidadDeEnemigos ++;
-                g.drawImage(
-                		imageToUse,
-                		distanceX,
-                		(int)Math.floor(HileraY) + enemigoX.velocidad(),
-                		30,
-                		30,
-                		this);
-            }
-            
-            distanceX += 40;
-        }
- 
-        HileraY += 0.1;
         
-        if(cantidadDeEnemigos == 0)
-        { 
-        	listaTemporal = Builder.BuildClaseA(1, 0);
-        	HileraY = 0;  
+        if (round == 1 || round == 2) {
+        	for (int i = 0; i < listaTemporal.lenght(); i++) 
+            { 
+            	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i);
+       
+                enemigoX.setCoordenadas(distanceX, (int)Math.floor(HileraY)); 
+                
+                Image imageToUse = enemigoX.nombre().contains("Jefe") ? jefeImage : enemigosImage;
+                
+                int eX = enemigoX.X();
+                int eY = enemigoX.Y();
+                
+                if(currentShotX > (eX - 15) && currentShotX < (eX + 15) && 
+        		   currentShoty > (eY - 15) && currentShoty < (eY + 15))
+                { 
+                	if(!golpeoEnemigo)
+                	{ 
+                        Score++;
+                    	enemigoX.bajarVida(); 
+
+                        if(enemigoX.nombre().contains("Jefe") && enemigoX.hitPoints() == 0)
+                        {
+                        	cantidadDeEnemigos = 0;
+                        	for (int x = 0; x < listaTemporal.lenght(); x++) 
+                            { 
+                            	IEnemigos enemigo2 = listaTemporal.seleccionarEnemigoEnPosicion(x);    
+                            	enemigo2.bajarVida();
+                            }
+                        }
+                    	
+                	}
+                	
+                	golpeoEnemigo = true;
+                }
+                else { 
+                    PrintBala(g); 
+                }
+            	
+                if (enemigoX.nombre().contains("Jefe")) {
+                	System.out.println("BossHP " + enemigoX.hitPoints());
+    			}
+                
+                if(enemigoX.hitPoints() > 0)
+                {
+                	cantidadDeEnemigos ++;
+                    g.drawImage(
+                    		imageToUse,
+                    		distanceX,
+                    		(int)Math.floor(HileraY) + enemigoX.velocidad(),
+                    		30,
+                    		30,
+                    		this);
+                }
+                distanceX += 40;
+                 
+            }
+     
+            HileraY += 0.1;
+            
+            if(cantidadDeEnemigos == 0)
+            { 
+            	listaTemporal = Builder.BuildClaseA(1, 0);
+            	HileraY = 0;  
+            	round ++;
+            }
+		}
+        
+        if(round == 3)
+        {   
+    		int posJefe = (int)Math.ceil((Math.random() * 7));
+    		int posJefeNormal = 0;
+        	IEnemigos[] enemigosArr = new IEnemigos[7];
+    		 
+        	for (int i = 0; i < listaTemporal.lenght(); i++) 
+            { 
+            	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i); 
+				enemigosArr[i] = enemigoX;
+				
+				if(enemigoX.nombre().contains("Jefe"))
+				{
+					posJefeNormal = i; 
+				}
+            } 
+
+        	IEnemigos NTemp = enemigosArr[posJefe];
+        	IEnemigos JTemp = enemigosArr[posJefeNormal];
+
+    		enemigosArr[posJefe] = JTemp;
+    		enemigosArr[posJefeNormal] = NTemp;
+        	
+    		
+        	for (int i = 0; i < listaTemporal.lenght(); i++) 
+            {  	  
+            	IEnemigos enemigoX = enemigosArr[i];
+       
+                enemigoX.setCoordenadas(distanceX, (int)Math.floor(HileraY)); 
+                
+                Image imageToUse = enemigoX.nombre().contains("Jefe") ? jefeImage : enemigosImage;
+                
+                int eX = enemigoX.X();
+                int eY = enemigoX.Y();
+                
+                if(currentShotX > (eX - 15) && currentShotX < (eX + 15) && 
+        		   currentShoty > (eY - 15) && currentShoty < (eY + 15))
+                { 
+                	if(!golpeoEnemigo)
+                	{ 
+                        Score++;
+                    	enemigoX.bajarVida(); 
+
+                        if(enemigoX.nombre().contains("Jefe") && enemigoX.hitPoints() == 0)
+                        {
+                        	cantidadDeEnemigos = 0;
+                        	for (int x = 0; x < listaTemporal.lenght(); x++) 
+                            { 
+                            	IEnemigos enemigo2 = listaTemporal.seleccionarEnemigoEnPosicion(x);    
+                            	enemigo2.bajarVida();
+                            }
+                        }
+                	}
+                	
+                	golpeoEnemigo = true;
+                }
+                else { 
+                    PrintBala(g); 
+                }
+            	
+                if (enemigoX.nombre().contains("Jefe")) {
+                	System.out.println("BossHP " + enemigoX.hitPoints());
+    			}
+                
+                if(enemigoX.hitPoints() > 0)
+                {
+                	cantidadDeEnemigos ++;
+                    g.drawImage(
+                    		imageToUse,
+                    		distanceX,
+                    		(int)Math.floor(HileraY) + enemigoX.velocidad(),
+                    		30,
+                    		30,
+                    		this);
+                    
+                }
+
+                distanceX += 40;
+            }
+     
+            HileraY += 0.1;
+            
+            if(cantidadDeEnemigos == 0)
+            { 
+            	listaTemporal = Builder.BuildClaseA(1, 0);
+            	HileraY = 0;  
+            	//round ++;
+            }
         }
         
         

@@ -26,8 +26,9 @@ public class LSimple  {
     public IEnemigos seleccionarEnemigoEnPosicion(int posicion)
     {
     	Node tempNodo = cabeza;
-    	for (int i = 0; i < posicion; i++) {
-    		if (tempNodo.nextNode == null) {
+    	for (int i = 1; i <= posicion; i++) {
+    		if (tempNodo.nextNode == null) 
+    		{
 				return tempNodo.enemigo;
 			}
 			tempNodo = tempNodo.nextNode;

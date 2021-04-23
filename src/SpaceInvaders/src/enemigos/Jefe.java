@@ -19,10 +19,10 @@ public class Jefe implements IEnemigos {
     
     
     public Jefe(int velocidad, double resistencia, String nombre) {
-        double hitPointsTemp = Math.round(Math.random() * 5);
+        double hitPointsTemp = Math.ceil(Math.random() * 5);
         
-        while(hitPointsTemp<2 && hitPointsTemp>5){
-            hitPointsTemp = Math.round(Math.random() * 5);
+        while(hitPointsTemp < 2 && hitPointsTemp > 5){
+            hitPointsTemp = Math.ceil(Math.random() * 5);
         }
         
         _hitPoints = hitPointsTemp;
