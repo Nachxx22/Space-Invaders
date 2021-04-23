@@ -149,7 +149,7 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
         int distanceX = 125;
         if (round == 0 || round == 1) {
         	for (int i = 0; i < listaTemporal.lenght(); i++) 
-            { 
+            {
             	IEnemigos enemigoX = listaTemporal.seleccionarEnemigoEnPosicion(i);
        
                 enemigoX.setCoordenadas(distanceX, (int)Math.floor(HileraY)); 
@@ -208,10 +208,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             
             if(cantidadDeEnemigos == 0)
             {
-                LSimple listaTemporal = Builder.BuildBasic(1,0);
-                LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
-                LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
-                LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+                listaTemporal=Builder.BuildClaseA(1,0);
+                listaTemporal2 = Builder.BuildClaseA(1,0);
+                listaTemporal3 = Builder.BuildClaseB(1,0);
+                 listaTemporal4 = Builder.BuildClaseC(1,0);
                 HileraY = 0;
                 round=(int) (Math.random()*6);;
             }
@@ -303,10 +303,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
             
             if(cantidadDeEnemigos == 0)
             {
-                LSimple listaTemporal = Builder.BuildBasic(1,0);
-                LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
-                LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
-                LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+                listaTemporal=Builder.BuildClaseA(1,0);
+                listaTemporal2 = Builder.BuildClaseA(1,0);
+                listaTemporal3 = Builder.BuildClaseB(1,0);
+                listaTemporal4 = Builder.BuildClaseC(1,0);
             	HileraY = 0;  
             	round=(int) (Math.random()*6);;
             }
@@ -394,10 +394,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
             if(cantidadDeEnemigos == 0)
             {
-                LSimple listaTemporal = Builder.BuildBasic(1,0);
-                LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
-                LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
-                LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+                listaTemporal=Builder.BuildClaseA(1,0);
+                listaTemporal2 = Builder.BuildClaseA(1,0);
+                listaTemporal3 = Builder.BuildClaseB(1,0);
+                listaTemporal4 = Builder.BuildClaseC(1,0);
                 HileraY = 0;
                 round=(int) (Math.random()*6);;
             }
@@ -485,10 +485,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
             if(cantidadDeEnemigos == 0)
             {
-                LSimple listaTemporal = Builder.BuildBasic(1,0);
-                LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
-                LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
-                LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+                listaTemporal=Builder.BuildClaseA(1,0);
+                listaTemporal2 = Builder.BuildClaseA(1,0);
+                listaTemporal3 = Builder.BuildClaseB(1,0);
+                listaTemporal4 = Builder.BuildClaseC(1,0);
                 HileraY = 0;
                 round=(int) (Math.random()*6);;
             }
@@ -576,10 +576,10 @@ public class Board extends JPanel implements  Runnable, MouseListener, MouseMoti
 
             if(cantidadDeEnemigos == 0)
             {
-                LSimple listaTemporal = Builder.BuildBasic(1,0);
-                LSimple listaTemporal2 = Builder.BuildClaseA(1,0);
-                LDoble listaTemporal3 = Builder.BuildClaseB(1,0);
-                LCircular listaTemporal4 = Builder.BuildClaseC(1,0);
+                listaTemporal=Builder.BuildClaseA(1,0);
+                listaTemporal2 = Builder.BuildClaseA(1,0);
+                listaTemporal3 = Builder.BuildClaseB(1,0);
+                listaTemporal4 = Builder.BuildClaseC(1,0);
                 HileraY = 0;
                 round=(int) (Math.random()*6);;
             }
